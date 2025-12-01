@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1217</width>
-    <height>852</height>
+    <width>1208</width>
+    <height>839</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -116,10 +116,10 @@ color: rgb(0, 0, 127);}</string>
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>20</y>
+      <x>500</x>
+      <y>-10</y>
       <width>691</width>
-      <height>781</height>
+      <height>801</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -174,8 +174,8 @@ color: rgb(0, 0, 127);}</string>
    <widget class="QTextEdit" name="textEdit_bid">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>150</y>
+      <x>20</x>
+      <y>120</y>
       <width>161</width>
       <height>61</height>
      </rect>
@@ -184,11 +184,11 @@ color: rgb(0, 0, 127);}</string>
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_Title">
+   <widget class="QTextEdit" name="textEdit_user_id">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>150</y>
+      <x>230</x>
+      <y>120</y>
       <width>161</width>
       <height>61</height>
      </rect>
@@ -197,11 +197,11 @@ color: rgb(0, 0, 127);}</string>
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_Borrow_by">
+   <widget class="QTextEdit" name="textEdit_Borrow_date">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>270</y>
+      <x>20</x>
+      <y>240</y>
       <width>161</width>
       <height>61</height>
      </rect>
@@ -210,11 +210,11 @@ color: rgb(0, 0, 127);}</string>
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_borrow_date">
+   <widget class="QTextEdit" name="textEdit_due_date">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>270</y>
+      <x>230</x>
+      <y>240</y>
       <width>161</width>
       <height>61</height>
      </rect>
@@ -223,11 +223,11 @@ color: rgb(0, 0, 127);}</string>
      <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_Due">
+   <widget class="QTextEdit" name="textEdit_return">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>390</y>
+      <x>20</x>
+      <y>360</y>
       <width>161</width>
       <height>61</height>
      </rect>
@@ -239,8 +239,8 @@ color: rgb(0, 0, 127);}</string>
    <widget class="QLabel" name="label_bid">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>115</y>
+      <x>30</x>
+      <y>85</y>
       <width>81</width>
       <height>21</height>
      </rect>
@@ -254,11 +254,11 @@ color: rgb(0, 0, 127);}</string>
      <string>Book ID</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_Title">
+   <widget class="QLabel" name="label_User_Id">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>110</y>
+      <x>230</x>
+      <y>80</y>
       <width>81</width>
       <height>21</height>
      </rect>
@@ -269,14 +269,14 @@ color: rgb(0, 0, 127);}</string>
      </font>
     </property>
     <property name="text">
-     <string>Title</string>
+     <string>User ID</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_Borro_by">
+   <widget class="QLabel" name="label_due">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>230</y>
+      <x>230</x>
+      <y>210</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -287,14 +287,14 @@ color: rgb(0, 0, 127);}</string>
      </font>
     </property>
     <property name="text">
-     <string>Borrow By</string>
+     <string>Due Date</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_Bdate">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>230</y>
+      <x>20</x>
+      <y>210</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -308,11 +308,11 @@ color: rgb(0, 0, 127);}</string>
      <string>Borrow Date</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_due_date">
+   <widget class="QLabel" name="label_return">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>350</y>
+      <x>30</x>
+      <y>320</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -323,7 +323,7 @@ color: rgb(0, 0, 127);}</string>
      </font>
     </property>
     <property name="text">
-     <string>Due Date</string>
+     <string>return Date</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_picadd">
@@ -353,7 +353,7 @@ color: rgb(0, 0, 127);}</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1217</width>
+     <width>1208</width>
      <height>26</height>
     </rect>
    </property>
