@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QMainWindow, QLabel, QPushButton, QTextEdit,QTableWidget, QMessageBox,QApplication
+from PyQt5.QtWidgets import (QMainWindow, QLabel, QPushButton, QTextEdit,QTableWidget, QMessageBox,QApplication,
+                             QTableWidgetItem)
 from PyQt5 import uic
 import os ,sys
 import pyodbc
@@ -73,16 +74,42 @@ class UI_delete_add(QMainWindow):
             conn.commit()
             cursor.close()
             conn.close()
-            print("اطلاعات با موفقیت ذخیره شد")
+            print("data added successfully")
         except Exception as e:
-            print("خطا در ثبت اطلاعات", e)
+            print("error in add data", e)
+
+        self.Display()
 
     def Delete(self):
         pass
+
     def Display(self):
-        pass
+        try:
+            conn = self.connect_to_db()
+            if not conn:
+                return
+            cursor = conn.cursor()
+            cursor.execute("SELECT Book_id,user_id,borrow_date,due_date,return_date FROM dbo.Borrowings")
+            results = cursor.fetchall()
 
+            self.tableWidget.setRowCount(0)
+            self.tableWidget.setColumnCount(len(results[0]))
+            self.tableWidget.setHorizontalHeaderLabels([
+                "Book id", "user id", "borrow_date", "due date", "return date"
+            ])
 
+            for row_idx, row_data in enumerate(results):
+                self.tableWidget.insertRow(row_idx)
+                for col_idx, col_data in enumerate(row_data):
+                    self.tableWidget.setItem(row_idx, col_idx, QTableWidgetItem(str(col_data)))
+
+            cursor.close()
+            conn.close()
+        except Exception as e:
+            print("خطا در بارگذاری اطلاعات:", e)
+
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"❌ Failed to display: {e}")
 
 
 os.environ["QT_QPA_PLATFORM_PLUGIN_PATH"] = r"F:\aferdos\پایتون\GUI\venv\Lib\site-packages\PyQt5\Qt5\plugins\platforms"
