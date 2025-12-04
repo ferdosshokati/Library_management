@@ -81,7 +81,42 @@ class UI_delete_add(QMainWindow):
         self.Display()
 
     def Delete(self):
-        pass
+        try:
+            selected_row = self.tableWidget.currentRow()
+            if selected_row < 0:
+                QMessageBox.warning(self,"Warning","please choose a Row")
+                return
+            book_id_item = self.tableWidget.item(selected_row,0)
+            if not book_id_item:
+                QMessageBox.warning(self,"Warning"," Book ID")
+                return
+
+            book_id = book_id_item.text()
+
+            reply = QMessageBox.question(
+                self,
+                "Delete",
+                f" are you sure you want to delete {book_id}?",
+                QMessageBox.Yes | QMessageBox.No,
+            )
+            if reply != QMessageBox.Yes:
+                return
+
+            conn = self.connect_to_db()
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM dbo.Borrowings WHERE book_id = ?", (book_id,))
+            conn.commit()
+
+            cursor.close()
+            conn.close()
+
+            QMessageBox.information(self,"Done","ُSuccessfuly deleted")
+
+            self.Display()
+
+        except Exception as e:
+            QMessageBox.critical(self, "DB Error", str(e))
+
 
     def Display(self):
         try:
