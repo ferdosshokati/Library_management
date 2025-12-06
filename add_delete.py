@@ -86,17 +86,16 @@ class UI_delete_add(QMainWindow):
             if selected_row < 0:
                 QMessageBox.warning(self,"Warning","please choose a Row")
                 return
-            book_id_item = self.tableWidget.item(selected_row,0)
-            if not book_id_item:
-                QMessageBox.warning(self,"Warning"," Book ID")
-                return
+            book_id = self.tableWidget.item(selected_row,0).text()
+            user_id = self.tableWidget.item(selected_row,1).text()
+            borrow_date = self.tableWidget.item(selected_row,2).text()
 
-            book_id = book_id_item.text()
 
             reply = QMessageBox.question(
                 self,
-                "Delete",
-                f" are you sure you want to delete {book_id}?",
+                "Confirm Delete",
+                f" Are you sure you want to delete this record?\n\n"
+                f"Book ID: {book_id}\nUser ID: {user_id}\nBorrow Date: {borrow_date}",
                 QMessageBox.Yes | QMessageBox.No,
             )
             if reply != QMessageBox.Yes:
@@ -104,13 +103,13 @@ class UI_delete_add(QMainWindow):
 
             conn = self.connect_to_db()
             cursor = conn.cursor()
-            cursor.execute("DELETE FROM dbo.Borrowings WHERE book_id = ?", (book_id,))
+            cursor.execute("DELETE FROM dbo.Borrowings WHERE book_id = ? AND user_id = ? AND borrow_date = ?", (book_id,user_id,borrow_date))
             conn.commit()
 
             cursor.close()
             conn.close()
 
-            QMessageBox.information(self,"Done","ُSuccessfuly deleted")
+            QMessageBox.information(self,"Success","record deleted successfully" )
 
             self.Display()
 
@@ -141,7 +140,7 @@ class UI_delete_add(QMainWindow):
             cursor.close()
             conn.close()
         except Exception as e:
-            print("خطا در بارگذاری اطلاعات:", e)
+            print("error in uploading data:", e)
 
         except Exception as e:
             QMessageBox.critical(self, "Error", f"❌ Failed to display: {e}")
